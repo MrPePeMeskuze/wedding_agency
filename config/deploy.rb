@@ -83,7 +83,7 @@ set :scm,             :git
 #set :repository,      "ssh://#{user}@#{deploy_server}/home/#{user}/git/#{application}.git"
 
 ## Если ваш репозиторий в GitHub, используйте такую конфигурацию
- set :repository,    "git@github.com:MrPePeMeskyze/wedding_agency.git"
+ set :repository,    "git@github.com:MrPePeMeskuze/wedding_agency.git"
  set :default_run_options, {:pty => true}
 
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
