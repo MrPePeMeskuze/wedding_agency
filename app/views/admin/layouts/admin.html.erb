@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%= render 'admin/layouts/head' %>
+	<body>
+		<nav class="navbar navbar-default topnav" role="navigation">
+	        <div class="container topnav">
+	            <%= render 'admin/layouts/navigation' %>
+	        </div>
+	    </nav>		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9">
+					<%= yield %>
+				</div>
+				<div style="border-left:1px solid black" class="col-md-3">
+					<%= yield :right %>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

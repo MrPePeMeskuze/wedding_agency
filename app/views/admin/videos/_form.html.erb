@@ -1,0 +1,45 @@
+<%= render 'admin/layouts/error_messages', :object => @video %>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="form-group">
+			<%= f.label :name, raw("<div class='required'>&#10039;</div>Название") %>
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="form-group">
+			<%= f.label :permalink, raw("<div class='required'>&#10039;</div>Ссылка") %>
+			<%= f.text_field :permalink, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="form-group">
+			<%= label_tag(:album_id, raw("<div class='required'>&#10039;</div> Альбом")) %>
+			<%= f.select :album_id, @albums.map{ |albums| [albums.name, albums.id] }.insert(0,'--'),{}, { :class => 'form-control'} %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-2">
+		<div class="form-group">
+			<%= f.label :sort_order, "Позиция" %>
+			<%= f.text_field :sort_order, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<div class="checkbox">
+	<%= f.check_box(:is_published) %>
+	<%= label_tag(:videos_is_published, "Публиковать") %>
+</div>
+
+<%= f.submit "Сохранить", class: "btn btn-primary" %>
+

@@ -1,0 +1,50 @@
+<%= render 'admin/layouts/error_messages', :object => @slide %>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="form-group">
+			<%= f.label :name, raw("<div class='required'>&#10039;</div>Название") %>
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="form-group">
+			<%= f.label :header, "Заголовок" %>
+			<%= f.text_field :header, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<div class="form-group">
+	<%= f.label :body, raw("Описание") %>
+	<%= f.text_area :body, class: "form-control" %>
+</div>
+
+<div class="row">
+	<div class="col-xs-2">
+		<div class="form-group">
+			<%= f.label :sort_order, "Позиция" %>
+			<%= f.text_field :sort_order, class: "form-control" %>
+		</div>
+	</div>
+</div>
+<a class="fancybox" href="<%= @slide.image.url if @slide.image? %>">
+	<%= image_tag(@slide.image.thumb.url) if @slide.image? %>
+</a>
+
+<div class="form-group">
+	<%= f.label :image, raw("<div class='required'>&#10039;</div>Изображение") %>
+	<%= f.file_field :image %>
+	<%= f.hidden_field :image_cache %>
+</div>
+
+<div class="checkbox">
+	<%= f.check_box(:is_published) %>
+	<%= label_tag(:slides_is_published, "Публиковать") %>
+</div>
+
+<%= f.submit "Сохранить", class: "btn btn-primary" %>
+

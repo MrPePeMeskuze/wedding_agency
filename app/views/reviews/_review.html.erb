@@ -1,0 +1,33 @@
+<div class="col-lg-6 col-md-6"> 
+	<div class="reviews-content-item">
+		<div class="reviews-person-img">
+			<% if review.avatar.url %>
+				<div class="person-img" style="background-image: url('<%= review.avatar.url(:view_thumbnail) %>')"></div>
+			<% else %>
+				<span class="fa fa-camera"></span>
+			<% end %>
+		</div>
+		<h3><%= review.fio %></h3>
+		<% if !review.event.blank? %>
+			<h4><%= review.event %> <%= review.date %></h4>
+		<% end %>
+		<% if !review.rate.blank? %>
+			<div class="rating-input">
+				<% $i = 1 %>
+				<% $num = review.rate.round %>
+				<% until $i > $num or $i >= 6  do %>
+				   <i class="glyphicon glyphicon-star"></i>
+				   <% $i +=1 %>
+				<% end %>
+			</div>
+		<% end %>
+		<p>
+			<%= review.body %>
+		</p>
+		<div class="col-lg-12 col-md-12 social_buttons">
+			<span class='st_vkontakte_custom' st_title="<%= review.fio %> <%= review.event %> <%= review.date %>" st_summary="<%= review.body %>" displayText='Vkontakte'></span>
+			<span class='st_facebook_custom' st_title="<%= review.fio %> <%= review.event %> <%= review.date %>" st_summary="<%= review.body %>" displayText='Facebook'></span>
+			<span class='st_twitter_custom' st_title="<%= review.fio %> <%= review.event %> <%= review.date %>" st_summary="<%= review.body %>" displayText='Tweet'></span>
+		</div>
+	</div>
+</div> 

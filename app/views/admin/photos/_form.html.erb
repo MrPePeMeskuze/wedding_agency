@@ -1,0 +1,53 @@
+<%= render 'admin/layouts/error_messages', :object => @photo %>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="form-group">
+			<%= f.label :name, raw("<div class='required'>&#10039;</div>Название") %>
+			<%= f.text_field :name, class: "form-control" %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="form-group">
+			<%= label_tag(:album_id, raw("<div class='required'>&#10039;</div> Альбом")) %>
+			<%= f.select :album_id, @albums.map{ |albums| [albums.name, albums.id] }.insert(0,'--'),{}, { :class => 'form-control'} %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-8">
+		<div class="form-group">
+			<%= label_tag(:service_id, raw("Услуга")) %>
+			<%= f.select :service_id, @services.map{ |services| [services.header, services.id] }.insert(0,'--'),{}, { :class => 'form-control'} %>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-xs-2">
+		<div class="form-group">
+			<%= f.label :sort_order, "Позиция" %>
+			<%= f.text_field :sort_order, class: "form-control" %>
+		</div>
+	</div>
+</div>
+<a class="fancybox" href="<%= @photo.image.url if @photo.image? %>">
+	<%= image_tag(@photo.image.thumb.url) if @photo.image? %>
+</a>
+<div class="form-group">
+	<%= f.label :image, raw("<div class='required'>&#10039;</div>Изображение") %>
+	<%= f.file_field :image %>
+	<%= f.hidden_field :image_cache %>
+</div>
+
+<div class="checkbox">
+	<%= f.check_box(:is_published) %>
+	<%= label_tag(:photos_is_published, "Публиковать") %>
+</div>
+
+<%= f.submit "Сохранить", class: "btn btn-primary" %>
+
